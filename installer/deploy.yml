@@ -1,0 +1,6 @@
+---
+- name: Build and deploy webserver and MariaDB Database
+  hosts: all
+  roles:
+    - {role: image_build}
+    - {role: kubernetes}

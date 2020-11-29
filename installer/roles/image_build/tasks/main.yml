@@ -1,0 +1,31 @@
+---
+- name: Build Webserver image
+  docker_image:
+    build:
+      path: ../web
+      dockerfile: Dockerfile
+      pull: false
+      args:
+        http_proxy: "{{ http_proxy | default('') }}"
+        https_proxy: "{{ https_proxy | default('') }}"
+        no_proxy: "{{ no_proxy | default('') }}"
+    name: myweb_image
+    tag: "1.0"
+    source: 'build'
+    force_source: true
+  delegate_to: localhost
+- name: Build mariadb image
+  docker_image:
+    build:
+      path: ../mariadb
+      dockerfile: Dockerfile
+      pull: false
+      args:
+        http_proxy: "{{ http_proxy | default('') }}"
+        https_proxy: "{{ https_proxy | default('') }}"
+        no_proxy: "{{ no_proxy | default('') }}"
+    name: mymariadb_image
+    tag: "1.0"
+    source: 'build'
+    force_source: true
+  delegate_to: localhost

@@ -1,0 +1,9 @@
+---
+- name: Apply Deployment
+  shell: |
+     kubectl apply -f roles/kubernetes/tasks/{{ item }}
+  with_items:
+    - "web-deployment.yml"
+    - "mariadb-deployment.yml"
+  no_log: false
+

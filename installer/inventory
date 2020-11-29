@@ -1,0 +1,5 @@
+localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python3"
+
+[all:vars]
+host_port=80
+host_port_ssl=443

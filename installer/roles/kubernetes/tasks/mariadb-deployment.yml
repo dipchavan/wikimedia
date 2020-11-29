@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maridadb-deployment
+  labels:
+    app: maridadb
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: maridadb
+  template:
+    metadata:
+      labels:
+        app: maridadb
+    spec:
+      containers:
+      - name: maridadb
+        image: mymariadb_image:1.0
+        ports:
+        - containerPort: 80
